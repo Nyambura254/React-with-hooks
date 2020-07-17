@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 var App=(props)=>{
-  var [count,setState]=useState(props.count)
+  var value= JSON.parse("count", localStorage.getItem("count"));
+  var [count,setState]=useState(value || props.count);
   var [text,setText]=useState('');
 
-  return(
+  useEffect(()=>{
+    localStorage.setItem("count", JSON.stringify(count));
+  })
+return(
     <div>
       <h2>
         The current {text || 'count'} is {count}
