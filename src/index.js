@@ -1,24 +1,21 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
-var App=(props)=>{
-  var [count,setState]=useState(props.count)
-  var [text,setText]=useState('');
+import React, {useState} from "react";
+import ReactDOM from "react-dom";
+
+
+
+var TaskApp=()=>{
+  var [task,setTasks]=useState([]);
+  var [title, setTitle]= useState("");
+  var [body, setBody]=useState("");
 
   return(
     <div>
-      <h2>
-        The current {text || 'count'} is {count}
-        </h2>
-      <button onClick={()=>setState(count+1)}>+1</button>
-      <button onClick={()=>setState(count-1)}>-1</button>
-      <button onClick={()=>setState(props.count)}>reset</button>
-    <input value={text}
-    onChange={(evt)=>setText(evt.target.value)}/>
+      <h1>Tasks</h1>
+      <p>Add Taks</p>
+      <form>
+        <input value={title} onChange={(evt)=> setTitle(evt.target.value)}></input>;
+        <textarea value={body} onChange={(evt)=> setBody}
+      </form>
     </div>
-  );
-};
-App.defaultProps={
-  count:0,
-};
-
-ReactDOM.render( <App />,document.getElementById('root'));
+  )
+}
